@@ -1,13 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import ColorPicker from './ColorPicker';
 
 const Legend = ({ color }) => {
     const svgRef = useRef(null);
-
-    const [showColorPicker, setShowColorPicker] = useState(false);
-    const [selectedColor, setSelectedColor] = useState(null);
-    // const [selectedLegendItem, setSelectedLegendItem] = useState(null);
 
     useEffect(() => {
 
@@ -20,11 +15,6 @@ const Legend = ({ color }) => {
         const legendRectSize = 18;
         const legendSpacing = 4;
 
-        const handleLegendItemClick = (d) => {
-            // setSelectedLegendItem(d);
-            setSelectedColor(d.target.attributes.color.value);
-            setShowColorPicker(true);
-        };
         const legendItems = legend
             .selectAll('.legend-item')
             .data(legendColors)
@@ -33,7 +23,7 @@ const Legend = ({ color }) => {
             .attr('class', 'legend-item')
             .style('cursor', 'pointer')
             .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
-            .on('click', handleLegendItemClick);
+            .on('click', (d) => {});
 
         legendItems
             .append('rect')
@@ -53,21 +43,8 @@ const Legend = ({ color }) => {
 
     }, [color]);
 
-    const handleColorPickerChange = (newColor) => {
-        // if (selectedLegendItem !== null) {
-        //     // selectedLegendItem.color = newColor;
-        //     setShowColorPicker(false);
-        // }
-    };
-
     return (
-        <div>
             <svg ref={svgRef}></svg>
-            {showColorPicker && (
-                <ColorPicker color={selectedColor} onColorChange={handleColorPickerChange} />
-            )}
-        </div>
-
     )
 }
 
