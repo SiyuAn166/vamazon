@@ -1,23 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import r1 from '../img/r1.png';
-import r2 from '../img/r2.png';
-import r3 from '../img/r3.png';
-import r4 from '../img/r4.png';
-import r5 from '../img/r5.png';
-
-const ri = { "1": r1, "2": r2, "3": r3, "4": r4, "5": r5 }
-
+// import ColorPalette from './ColorPalette';
 
 const D3BubbleChart = ({ data }) => {
     const width = 1000;
     const height = 600;
     const svgRef = useRef(null);
-
+    const importAll = (requireContext) => requireContext.keys().map(requireContext);
+    const ri = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
     useEffect(() => {
         const svg = d3.select(svgRef.current);
         svg.attr('height', height)
-        const color = d3.scaleOrdinal(d3.schemeTableau10);
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+
         const centralForce = d3.forceCenter(width / 2, height / 2);
         const simulation = d3.forceSimulation(data)
             .force("x", d3.forceX().strength(0.01))
@@ -28,15 +23,13 @@ const D3BubbleChart = ({ data }) => {
             .alpha(1)
             .alphaTarget(0.3)
             .velocityDecay(0.1)
-
-
         const imageGroups = svg.selectAll('g')
             .data(data)
             .enter()
             .append('g');
 
         imageGroups.append('image')
-            .attr('xlink:href', d => ri[d.rating])
+            .attr('xlink:href', d => ri[d.rating - 1])
             .attr('width', d => d.value * 5)
             .attr('height', d => d.value * 5)
             .attr('opacity', 1)
@@ -46,12 +39,10 @@ const D3BubbleChart = ({ data }) => {
                 .on('end', onDragEnd))
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
-
-
         imageGroups.append('circle')
             .attr('r', d => d.value * 2.5)
             .attr('fill', d => color(d.group))
-            .attr('opacity', 0.6)
+            .attr('opacity', 0.7)
             .call(d3.drag()
                 .on('start', onDragStart)
                 .on('drag', onDrag)
@@ -59,9 +50,39 @@ const D3BubbleChart = ({ data }) => {
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
 
-        
-        
 
+        const legend = svg
+            .append('g')
+            .attr('class', 'legend')
+            .attr('transform', 'translate(20, 20)');
+
+        const legendColors = color.domain();
+        const legendRectSize = 18;
+        const legendSpacing = 4;
+
+        const legendItems = legend
+            .selectAll('.legend-item')
+            .data(legendColors)
+            .enter()
+            .append('g')
+            .attr('class', 'legend-item')
+            .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`);
+
+        legendItems
+            .append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .attr('color', d => color(d))
+            .style('fill', d => color(d))
+            .on('click', (d) => {
+                console.log(d.target.attributes.color.value)
+            })
+            
+        legendItems
+            .append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing)
+            .text(d => d);
 
         function onMouseEnter(event, d) {
             const textElement = d3.select(event.target);
@@ -115,18 +136,16 @@ const D3BubbleChart = ({ data }) => {
                 .attr('cy', d => d.y);
         })
 
-    }, [data]);
+    }, [data, ri]);
 
     return (
-
-
         <div style={{ width: '100%', position: 'relative' }} id='bubble'>
+            <div id='legend-div'></div>
             <svg
                 ref={svgRef}
                 width="100%"
             ></svg>
         </div>
-
     );
 };
 

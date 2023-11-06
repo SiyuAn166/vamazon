@@ -1,0 +1,73 @@
+{
+    "nodes": [
+        {
+            "name": "Amazon Products",
+            "category": "Amazon Products"
+        },
+        {
+            "name": "Lifestyle Products",
+            "category": "Lifestyle Products"
+        },
+        {
+            "name": "Technical Products",
+            "category": "Technical Products"
+        },
+        {
+            "name": "All Beauty",
+            "category": "All Beauty"
+        },
+        {
+            "name": "Fashion",
+            "category": "Fashion"
+        },
+        {
+            "name": "Appliances",
+            "category": "Appliances"
+        },
+        {
+            "name": "Industrial and Scientific",
+            "category": "Industrial and Scientific"
+        },
+        {
+            "name": "Luxury Beauty",
+            "category": "Luxury Beauty"
+        }
+    ],
+    "links": [
+        {
+            "source": "Amazon Products",
+            "target": "Lifestyle Products",
+            "value": 10
+        },
+        {
+            "source": "Lifestyle Products",
+            "target": "All Beauty",
+            "value": 5
+        },
+        {
+            "source": "Lifestyle Products",
+            "target": "Luxury Beauty",
+            "value": 3
+        },
+        {
+            "source": "Lifestyle Products",
+            "target": "Fashion",
+            "value": 2
+        },
+        {
+            "source": "Amazon Products",
+            "target": "Technical Products",
+            "value": 3
+        },
+        {
+            "source": "Technical Products",
+            "target": "Industrial and Scientific",
+            "value": 1
+        },
+        {
+            "source": "Technical Products",
+            "target": "Appliances",
+            "value": 2
+        }
+    ]
+}

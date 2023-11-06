@@ -1,146 +1,147 @@
 [
     {
-        "name": "G",
-        "value": 15,
-        "rating": "2",
-        "group": 1
+      "name": "G",
+      "value": 15,
+      "rating": 2,
+      "group": "All Beauty"
     },
     {
-        "name": "H",
-        "value": 18,
-        "rating": "3",
-        "group": 2
+      "name": "H",
+      "value": 18,
+      "rating": 3,
+      "group": "Fashion"
     },
     {
-        "name": "I",
-        "value": 11,
-        "rating": "3",
-        "group": 3
+      "name": "I",
+      "value": 11,
+      "rating": 3,
+      "group": "Luxury Beauty"
     },
     {
-        "name": "J",
-        "value": 20,
-        "rating": "5",
-        "group": 4
+      "name": "J",
+      "value": 20,
+      "rating": 5,
+      "group": "Industrial and Scientific"
     },
     {
-        "name": "K",
-        "value": 16,
-        "rating": "1",
-        "group": 5
+      "name": "K",
+      "value": 16,
+      "rating": 1,
+      "group": "Appliances"
     },
     {
-        "name": "L",
-        "value": 14,
-        "rating": "4",
-        "group": 1
+      "name": "L",
+      "value": 14,
+      "rating": 4,
+      "group": "All Beauty"
     },
     {
-        "name": "M",
-        "value": 13,
-        "rating": "2",
-        "group": 2
+      "name": "M",
+      "value": 13,
+      "rating": 2,
+      "group": "Fashion"
     },
     {
-        "name": "N",
-        "value": 19,
-        "rating": "3",
-        "group": 3
+      "name": "N",
+      "value": 19,
+      "rating": 3,
+      "group": "Luxury Beauty"
     },
     {
-        "name": "O",
-        "value": 15,
-        "rating": "3",
-        "group": 4
+      "name": "O",
+      "value": 15,
+      "rating": 3,
+      "group": "Industrial and Scientific"
     },
     {
-        "name": "P",
-        "value": 12,
-        "rating": "5",
-        "group": 5
+      "name": "P",
+      "value": 12,
+      "rating": 5,
+      "group": "Appliances"
     },
     {
-        "name": "Q",
-        "value": 18,
-        "rating": "1",
-        "group": 1
+      "name": "Q",
+      "value": 18,
+      "rating": 1,
+      "group": "All Beauty"
     },
     {
-        "name": "R",
-        "value": 22,
-        "rating": "4",
-        "group": 2
+      "name": "R",
+      "value": 22,
+      "rating": 4,
+      "group": "Fashion"
     },
     {
-        "name": "S",
-        "value": 13,
-        "rating": "2",
-        "group": 3
+      "name": "S",
+      "value": 13,
+      "rating": 2,
+      "group": "Luxury Beauty"
     },
     {
-        "name": "T",
-        "value": 20,
-        "rating": "3",
-        "group": 4
+      "name": "T",
+      "value": 20,
+      "rating": 3,
+      "group": "Industrial and Scientific"
     },
     {
-        "name": "U",
-        "value": 16,
-        "rating": "3",
-        "group": 5
+      "name": "U",
+      "value": 16,
+      "rating": 3,
+      "group": "Appliances"
     },
     {
-        "name": "V",
-        "value": 21,
-        "rating": "5",
-        "group": 1
+      "name": "V",
+      "value": 21,
+      "rating": 5,
+      "group": "All Beauty"
     },
     {
-        "name": "W",
-        "value": 17,
-        "rating": "1",
-        "group": 2
+      "name": "W",
+      "value": 17,
+      "rating": 1,
+      "group": "Fashion"
     },
     {
-        "name": "X",
-        "value": 12,
-        "rating": "4",
-        "group": 3
+      "name": "X",
+      "value": 12,
+      "rating": 4,
+      "group": "Luxury Beauty"
     },
     {
-        "name": "Y",
-        "value": 19,
-        "rating": "2",
-        "group": 4
+      "name": "Y",
+      "value": 19,
+      "rating": 2,
+      "group": "Industrial and Scientific"
     },
     {
-        "name": "Z",
-        "value": 14,
-        "rating": "3",
-        "group": 5
+      "name": "Z",
+      "value": 14,
+      "rating": 3,
+      "group": "Appliances"
     },
     {
-        "name": "AA",
-        "value": 15,
-        "rating": "3",
-        "group": 1
+      "name": "AA",
+      "value": 15,
+      "rating": 3,
+      "group": "All Beauty"
     },
     {
-        "name": "BB",
-        "value": 20,
-        "rating": "5",
-        "group": 2
+      "name": "BB",
+      "value": 20,
+      "rating": 5,
+      "group": "Fashion"
     },
     {
-        "name": "CC",
-        "value": 14,
-        "rating": "1",
-        "group": 3
+      "name": "CC",
+      "value": 14,
+      "rating": 1,
+      "group": "Luxury Beauty"
     },
     {
-        "name": "DD",
-        "value": 12,
-        "rating": "4",
-        "group": 4
+      "name": "DD",
+      "value": 12,
+      "rating": 4,
+      "group": "Industrial and Scientific"
     }
-]
+  ]
+  
