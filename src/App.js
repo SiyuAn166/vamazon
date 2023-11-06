@@ -11,6 +11,8 @@ import dBubble from './data/BubbleChart.json';
 import BubbleText from './charts/BubbleText';
 import tBubble from './data/BubbleText.json';
 
+import XYBubble from './charts/XYBubble';
+
 
 function App() {
 
@@ -19,6 +21,7 @@ function App() {
       {/* <Sankey data={dSankey.data} links={dSankey.links} /> */}
       <D3Sankey data={d3Sankey} />
       <D3BubbleChart data={dBubble} />
+      <XYBubble data={dBubble}/>
       <BubbleText data={tBubble} />
     </div>
 

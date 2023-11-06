@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import drawLegend from './legend.js'
+
 const BubbleText = ({ data }) => {
     const svgRef = useRef();
 
@@ -28,7 +30,6 @@ const BubbleText = ({ data }) => {
             .enter()
             .append('g');
 
-
         textGroups.append('text')
             .attr('text-anchor', 'middle')
             .attr('dy', '.35em')
@@ -43,39 +44,7 @@ const BubbleText = ({ data }) => {
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
 
-        const legend = svg
-            .append('g')
-            .attr('class', 'legend')
-            .attr('transform', 'translate(20, 20)');
-
-        const legendColors = color.domain();
-        const legendRectSize = 18;
-        const legendSpacing = 4;
-
-        const legendItems = legend
-            .selectAll('.legend-item')
-            .data(legendColors)
-            .enter()
-            .append('g')
-            .attr('class', 'legend-item')
-            .attr('cursor', 'pointer')
-            .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`);
-
-        legendItems
-            .append('rect')
-            .attr('width', legendRectSize)
-            .attr('height', legendRectSize)
-            .attr('color', d => color(d))
-            .style('fill', d => color(d))
-            .on('click', (d) => {
-                console.log(d.target.attributes.color.value)
-            })
-
-        legendItems
-            .append('text')
-            .attr('x', legendRectSize + legendSpacing)
-            .attr('y', legendRectSize - legendSpacing)
-            .text(d => d);
+        drawLegend(svg, color);
 
         function onMouseEnter(event, d) {
 
@@ -133,10 +102,10 @@ const BubbleText = ({ data }) => {
 
 
     return (
-        <div style={{ width: '100%', position: 'relative'}} id='bubble-text'>
+        <div style={{ width: '100%', position: 'relative' }} id='bubble-text'>
             <svg
                 ref={svgRef}
-                width="50%"
+                width="100%"
             ></svg>
         </div>
     );

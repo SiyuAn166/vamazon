@@ -1,4 +1,5 @@
-[
+{
+  "nodes": [
     {
       "name": "G",
       "value": 15,
@@ -14,7 +15,7 @@
     {
       "name": "I",
       "value": 11,
-      "rating": 3,
+      "rating": 5,
       "group": "Luxury Beauty"
     },
     {
@@ -50,13 +51,13 @@
     {
       "name": "O",
       "value": 15,
-      "rating": 3,
+      "rating": 1,
       "group": "Industrial and Scientific"
     },
     {
       "name": "P",
-      "value": 12,
-      "rating": 5,
+      "value": 18,
+      "rating": 4,
       "group": "Appliances"
     },
     {
@@ -86,7 +87,7 @@
     {
       "name": "U",
       "value": 16,
-      "rating": 3,
+      "rating": 5,
       "group": "Appliances"
     },
     {
@@ -143,5 +144,27 @@
       "rating": 4,
       "group": "Industrial and Scientific"
     }
+  ],
+  "links": [
+    {
+      "source": "CC",
+      "target": "S",
+      "value": 2
+    },
+    {
+      "source": "S",
+      "target": "N",
+      "value": 2
+    },
+    {
+      "source": "N",
+      "target": "X",
+      "value": 2
+    },
+    {
+      "source": "X",
+      "target": "I",
+      "value": 2
+    }
   ]
-  
+}
