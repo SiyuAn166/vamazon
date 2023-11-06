@@ -4,216 +4,216 @@
         "value": 12,
         "text": "Great product!",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Item X",
         "value": 18,
         "text": "Terrible experience.",
         "rating": 1,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Gadget Z",
         "value": 15,
         "text": "Average quality.",
         "rating": 3,
-        "group": 5
+        "group": "Luxury Beauty"
     },
     {
         "name": "Widget B",
         "value": 10,
         "text": "Excellent choice!",
         "rating": 4,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Device C",
         "value": 19,
         "text": "Not worth the price.",
         "rating": 2,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Item Y",
         "value": 16,
         "text": "Satisfied with the purchase.",
         "rating": 4,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Tool D",
         "value": 17,
         "text": "Works like a charm!",
         "rating": 5,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Appliance M",
         "value": 20,
         "text": "Disappointing quality.",
         "rating": 1,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Product E",
         "value": 13,
         "text": "Affordable and durable.",
         "rating": 4,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Tech G",
         "value": 14,
         "text": "Average performance.",
         "rating": 3,
-        "group": 5
+        "group": "Luxury Beauty"
     },
     {
         "name": "Item F",
         "value": 10,
         "text": "Outstanding value!",
         "rating": 5,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Device K",
         "value": 17,
         "text": "Highly recommended.",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Gadget L",
         "value": 11,
         "text": "Decent product for the price.",
         "rating": 3,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Tool N",
         "value": 16,
         "text": "Not as described.",
         "rating": 2,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Widget H",
         "value": 12,
         "text": "Impressed with the quality.",
         "rating": 4,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Product P",
         "value": 18,
         "text": "Good value for money.",
         "rating": 4,
-        "group": 5
+        "group": "Luxury Beauty"
     },
     {
         "name": "Appliance Q",
         "value": 15,
         "text": "Horrible experience.",
         "rating": 1,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Tech I",
         "value": 19,
         "text": "Smooth transaction.",
         "rating": 4,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Device J",
         "value": 14,
         "text": "Reliable and efficient.",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Gadget R",
         "value": 12,
         "text": "Waste of money.",
         "rating": 1,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Item O",
         "value": 10,
         "text": "Perfect fit!",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Widget S",
         "value": 11,
         "text": "Unpleasant surprise.",
         "rating": 2,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Tool T",
         "value": 13,
         "text": "Exceptional quality.",
         "rating": 5,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Product U",
         "value": 20,
         "text": "Frustrating experience.",
         "rating": 1,
-        "group": 5
+        "group": "Luxury Beauty"
     },
     {
         "name": "Appliance V",
         "value": 17,
         "text": "Great investment.",
         "rating": 4,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Tech W",
         "value": 16,
         "text": "Best in its category.",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     },
     {
         "name": "Device X",
         "value": 15,
         "text": "Mediocre performance.",
         "rating": 2,
-        "group": 2
+        "group": "Fashion"
     },
     {
         "name": "Gadget Y",
         "value": 12,
         "text": "Impressive features.",
         "rating": 4,
-        "group": 1
+        "group": "Industrial and Scientific"
     },
     {
         "name": "Item Z",
         "value": 14,
         "text": "Not as described.",
         "rating": 1,
-        "group": 5
+        "group": "Luxury Beauty"
     },
     {
         "name": "Widget AA",
         "value": 19,
         "text": "Outstanding value!",
         "rating": 5,
-        "group": 4
+        "group": "Appliances"
     },
     {
         "name": "Tool BB",
         "value": 18,
         "text": "Exceptional quality.",
         "rating": 5,
-        "group": 3
+        "group": "All Beauty"
     }
 ]

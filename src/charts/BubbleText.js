@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-
+import Legend from './Legend';
 const BubbleText = ({ data }) => {
     const svgRef = useRef();
-    
+
     const width = 1000;
     const height = 600;
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
         svg.attr('height', height)
 
-        const color = d3.scaleOrdinal(d3.schemeTableau10);
         const centralForce = d3.forceCenter(width / 2, height / 2);
         const simulation = d3.forceSimulation(data)
             .force("x", d3.forceX().strength(0.01))
@@ -35,6 +35,7 @@ const BubbleText = ({ data }) => {
             .attr('dy', '.35em')
             .style('font-size', d => `${d.value * 1.5}px`)
             .style('fill', d => color(d.group))
+            .style('cursor', 'pointer')
             .text(d => d.text)
             .call(d3.drag()
                 .on('start', onDragStart)
@@ -43,6 +44,38 @@ const BubbleText = ({ data }) => {
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
 
+        // const legend = svg
+        //     .append('g')
+        //     .attr('class', 'legend')
+        //     .attr('transform', 'translate(20, 20)');
+
+        // const legendColors = color.domain();
+        // const legendRectSize = 18;
+        // const legendSpacing = 4;
+
+        // const legendItems = legend
+        //     .selectAll('.legend-item')
+        //     .data(legendColors)
+        //     .enter()
+        //     .append('g')
+        //     .attr('class', 'legend-item')
+        //     .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`);
+
+        // legendItems
+        //     .append('rect')
+        //     .attr('width', legendRectSize)
+        //     .attr('height', legendRectSize)
+        //     .attr('color', d => color(d))
+        //     .style('fill', d => color(d))
+        //     .on('click', (d) => {
+        //         console.log(d.target.attributes.color.value)
+        //     })
+
+        // legendItems
+        //     .append('text')
+        //     .attr('x', legendRectSize + legendSpacing)
+        //     .attr('y', legendRectSize - legendSpacing)
+        //     .text(d => d);
 
         function onMouseEnter(event, d) {
 
@@ -56,7 +89,7 @@ const BubbleText = ({ data }) => {
                 .classed('hover-on', true)
                 .style('position', 'absolute')
                 .style('left', `${textX}px`)
-                .style('top', `${textY-200}px`);
+                .style('top', `${textY - 200}px`);
 
             hoverOn.html(`
                     <p>Name: ${d.name}</p>
@@ -95,16 +128,17 @@ const BubbleText = ({ data }) => {
                 .attr('y', d => d.y);
 
         })
-    }, [data]);
+    }, [data, color]);
 
 
 
     return (
-        <div style={{ width: '100%' , position: 'relative'}} id='bubble-text'>
+        <div style={{ width: '100%', position: 'relative'}} id='bubble-text'>
             <svg
                 ref={svgRef}
-                width="100%"
+                width="50%"
             ></svg>
+            <Legend color={color}/>
         </div>
     );
 }
