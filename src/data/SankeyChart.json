@@ -16,37 +16,35 @@
             "name": "Fashion"
         },
         {
+            "name": "Luxury Beauty"
+        },
+        {
             "name": "Appliances"
         },
         {
             "name": "Industrial and Scientific"
-        },
-        {
-            "name": "Luxury Beauty"
         }
     ],
     "links": [
-        
         {
             "source": "Amazon Products",
             "target": "Lifestyle Products",
-            "value": 10
-        },
-
-        {
-            "source": "Lifestyle Products",
-            "target": "All Beauty",
             "value": 5
         },
         {
             "source": "Lifestyle Products",
-            "target": "Luxury Beauty",
-            "value": 3
+            "target": "All Beauty",
+            "value": 2
         },
         {
             "source": "Lifestyle Products",
             "target": "Fashion",
             "value": 2
+        },
+        {
+            "source": "Lifestyle Products",
+            "target": "Luxury Beauty",
+            "value": 1
         },
         {
             "source": "Amazon Products",

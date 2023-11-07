@@ -101,8 +101,10 @@ const BubbleText = ({ data }) => {
 
 
 
+
     return (
-        <div style={{ width: '100%', position: 'relative' }} id='bubble-text'>
+        
+        <div style={{ width: '100%', position: 'relative'}} id='bubble-text'>
             <svg
                 ref={svgRef}
                 width="100%"

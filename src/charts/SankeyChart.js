@@ -4,17 +4,20 @@ import { SankeyChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([SankeyChart, CanvasRenderer]);
 
-
-const Sankey = ({ data, links }) => {
+const Sankey = ({ data }) => {
     const chartRef = useRef(null);
+    const nodes = data.data;
+    const links = data.links;
     useEffect(() => {
         if (chartRef.current) {
             const chartOptions = {
-                data,
-                links,
+                data: nodes,
+                links: links,
                 lineStyle: {
-                    color: 'source',
-                    curveness: 0.5
+                    color: 'gradient',
+                    curveness: 0.5,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    shadowBlur: 10
                 },
                 type: 'sankey',
                 bottom: '10%',
@@ -29,11 +32,14 @@ const Sankey = ({ data, links }) => {
                 series: {
                     type: 'sankey',
                     layout: 'none',
+                    orient: 'vertical',
+                    nodeAlign: 'justify',
                     emphasis: {
                         focus: 'adjacency',
                     },
                     label: {
-                        fontSize: 20, 
+                        fontSize: 15,
+                        position: 'top',
                     },
                     ...chartOptions,
                 },
@@ -41,6 +47,8 @@ const Sankey = ({ data, links }) => {
         }
     })
 
-    return <div ref={chartRef} style={{ width: '100%', height: '600px' }} />;
+    return (
+        <div ref={chartRef} style={{ width: '100%', height: '1000px' }} />
+    )
 }
 export default Sankey;
