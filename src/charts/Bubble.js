@@ -23,7 +23,7 @@ function drawLegend(svg, color) {
         .attr('cursor', 'pointer')
         .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
         .on('mouseenter', (e, d) => {
-            const nonHoveringImages = svg.selectAll("image")
+            const nonHoveringImages = svg.selectAll("image[bubble-item]")
                 .filter(function () {
                     return this.getAttribute("grp") !== d;
                 });
@@ -42,7 +42,7 @@ function drawLegend(svg, color) {
 
         })
         .on('mouseleave', (e, d) => {
-            const nonHoveringImages = svg.selectAll("image")
+            const nonHoveringImages = svg.selectAll("image[bubble-item]")
                 .filter(function () {
                     return this.getAttribute("grp") !== d;
                 });
