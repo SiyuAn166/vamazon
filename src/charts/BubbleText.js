@@ -58,19 +58,30 @@ const BubbleText = ({ data }) => {
                 .classed('hover-on', true)
                 .style('position', 'absolute')
                 .style('left', `${textX}px`)
-                .style('top', `${textY - 200}px`);
-
-            hoverOn.html(`
+                .style('top', `${textY - 200}px`)
+                .style('opacity', 0)
+                .style('display', 'block')
+                .style('background-color', 'black')
+                .style('border-radius', '15px')
+                .style('padding', '10px')
+                .style('color', 'white')
+                .html(`
                     <p>Name: ${d.name}</p>
                     <p>Review: ${d.text}</p>
                     <p>Rating: ${d.rating}</p>
                     <p>Category: ${d.group}</p>
                     `);
-            hoverOn.style('display', 'block');
+
+            hoverOn
+                .transition().duration(300)
+                .style('opacity', 1)
+
+
         }
 
-        function onMouseLeave() {
-            d3.select('.hover-on').style('display', 'none').remove();
+        function onMouseLeave(event, d) {
+            d3.select('.hover-on')
+            .style('display', 'none').remove();
         }
 
 
@@ -103,8 +114,8 @@ const BubbleText = ({ data }) => {
 
 
     return (
-        
-        <div style={{ width: '100%', position: 'relative'}} id='bubble-text'>
+
+        <div style={{ width: '100%', position: 'relative' }} id='bubble-text'>
             <svg
                 ref={svgRef}
                 width="100%"

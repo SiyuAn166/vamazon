@@ -68,15 +68,23 @@ const D3BubbleChart = ({ data }) => {
                     .classed('hover-on', true)
                     .style('position', 'absolute')
                     .style('left', `${textX}px`)
-                    .style('top', `${textY - 200}px`);
+                    .style('top', `${textY - 200}px`)
+                    .style('opacity', 0)
+                    .style('display', 'block')
+                    .style('background-color', 'black')
+                    .style('border-radius', '15px')
+                    .style('padding', '10px')
+                    .style('color', 'white')
+                    .html(`
+                        <p>Name: ${d.name}</p>
+                        <p>Value: ${d.value}</p>
+                        <p>Rating: ${d.rating}</p>
+                        <p>Category: ${d.group}</p>
+                        `);
+                hoverOn
+                    .transition().duration(300)
+                    .style('opacity', 1)
 
-                hoverOn.html(`
-                                    <p>Name: ${d.name}</p>
-                                    <p>Value: ${d.value}</p>
-                                    <p>Rating: ${d.rating}</p>
-                                    <p>Category: ${d.group}</p>
-                                    `);
-                hoverOn.style('display', 'block');
             }
 
             function onMouseLeave() {
