@@ -1,6 +1,62 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import drawLegend from './legend.js'
+
+function drawLegend(svg, color) {
+    const legend = svg
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', 'translate(20, 20)');
+
+    const legendColors = color.domain();
+    const legendRectSize = 18;
+    const legendSpacing = 4;
+    const legendItems = legend
+        .selectAll('.legend-item')
+        .data(legendColors)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-item')
+        .attr('cursor', 'pointer')
+        .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
+        .on('mouseenter', (e, d) => {
+            const nonHoveringText = svg.selectAll(".bubble-text-item")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringText
+                .transition()
+                .duration(300)
+                .attr('opacity', 0.1)
+        })
+        .on('mouseleave', (e, d) => {
+            const nonHoveringText = svg.selectAll(".bubble-text-item")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringText
+                .transition()
+                .duration(300)
+                .attr('opacity', 1)
+        })
+
+    legendItems
+        .append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .attr('color', d => color(d))
+        .style('fill', d => color(d))
+        .on('click', (d) => {
+
+        })
+
+    legendItems
+        .append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(d => d);
+
+}
+
 
 const BubbleText = ({ data }) => {
     const svgRef = useRef();
@@ -31,8 +87,10 @@ const BubbleText = ({ data }) => {
             .append('g');
 
         textGroups.append('text')
+            .attr('class', 'bubble-text-item')
             .attr('text-anchor', 'middle')
             .attr('dy', '.35em')
+            .attr('grp', d => d.group)
             .style('font-size', d => `${d.value * 1.5}px`)
             .style('fill', d => color(d.group))
             .style('cursor', 'pointer')
@@ -43,6 +101,19 @@ const BubbleText = ({ data }) => {
                 .on('end', onDragEnd))
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
+
+        svg.append("defs")
+            .append("filter")
+            .attr("id", "text-shadow")
+            .attr("width", "150%")
+            .attr("height", "150%")
+            .append("feDropShadow")
+            .attr("dx", 2)
+            .attr("dy", 2)
+            .attr("stdDeviation", 3)
+            .attr("flood-color", "rgba(0, 0, 0, 0.6)");
+        svg.selectAll(".bubble-text-item")
+            .attr("filter", "url(#text-shadow)");
 
         drawLegend(svg, color);
 
@@ -81,7 +152,7 @@ const BubbleText = ({ data }) => {
 
         function onMouseLeave(event, d) {
             d3.select('.hover-on')
-            .style('display', 'none').remove();
+                .style('display', 'none').remove();
         }
 
 

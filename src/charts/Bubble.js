@@ -1,19 +1,118 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import drawLegend from './legend.js'
+
+
+const importAll = (requireContext) => requireContext.keys().map(requireContext);
+const ri = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
+
+function drawLegend(svg, color) {
+    const legend = svg
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', 'translate(20, 20)');
+
+    const legendColors = color.domain();
+    const legendRectSize = 18;
+    const legendSpacing = 4;
+    const legendItems = legend
+        .selectAll('.legend-item')
+        .data(legendColors)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-item')
+        .attr('cursor', 'pointer')
+        .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
+        .on('mouseenter', (e, d) => {
+            const nonHoveringImages = svg.selectAll("image")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            const nonHoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringImages
+                .transition()
+                .duration(100)
+                .attr('opacity', 0.1)
+            nonHoveringCircles
+                .transition()
+                .duration(300)
+                .attr('opacity', 0.1)
+
+        })
+        .on('mouseleave', (e, d) => {
+            const nonHoveringImages = svg.selectAll("image")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+
+            const nonHoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringImages
+                .transition()
+                .duration(300)
+                .attr('opacity', 1)
+            nonHoveringCircles
+                .transition()
+                .duration(300)
+                .attr('opacity', 0.7)
+        });
+
+    legendItems
+        .append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .attr('color', d => color(d))
+        .style('fill', d => color(d))
+        .on('click', (d) => {
+
+        });
+
+    legendItems
+        .append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(d => d);
+
+    const emoji = svg
+        .append('g')
+        .attr('class', 'emoji-face')
+        .attr('transform', 'translate(20, 150)');
+
+    const emojiItems = emoji.selectAll('.legend-emoji-face')
+        .data(ri)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-emoji-face-item')
+        .attr('cursor', 'pointer')
+        .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
+
+    emojiItems.append('image')
+        .attr('class', 'legend-emoji-face-img')
+        .attr('xlink:href', d => d)
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .attr('opacity', 1)
+    
+        emojiItems
+        .append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text((d, i) => `Rating = ${i+1}`);
+
+}
 
 const D3BubbleChart = ({ data }) => {
     const width = 1000;
     const height = 600;
     const svgRef = useRef(null);
-    const importAll = (requireContext) => requireContext.keys().map(requireContext);
-    const ri = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
+
     const color = d3.scaleOrdinal(d3.schemeCategory10);
     const nodes = data.nodes;
     const links = data.links;
-
-
-
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
@@ -38,9 +137,11 @@ const D3BubbleChart = ({ data }) => {
 
             imageGroups.append('image')
                 .attr('xlink:href', d => ri[d.rating - 1])
+                .attr('bubble-item', true)
                 .attr('width', d => d.value * 5)
                 .attr('height', d => d.value * 5)
                 .attr('opacity', 1)
+                .attr('grp', d => d.group)
                 .call(d3.drag()
                     .on('start', onDragStart)
                     .on('drag', onDrag)
@@ -51,12 +152,26 @@ const D3BubbleChart = ({ data }) => {
                 .attr('r', d => d.value * 2.5)
                 .attr('fill', d => color(d.group))
                 .attr('opacity', 0.7)
+                .attr('grp', d => d.group)
                 .call(d3.drag()
                     .on('start', onDragStart)
                     .on('drag', onDrag)
                     .on('end', onDragEnd))
                 .on('mouseenter', onMouseEnter)
                 .on('mouseleave', onMouseLeave);
+
+            svg.append("defs")
+                .append("filter")
+                .attr("id", "image-shadow")
+                .attr("width", "150%")
+                .attr("height", "150%")
+                .append("feDropShadow")
+                .attr("dx", 2)
+                .attr("dy", 2)
+                .attr("stdDeviation", 3)
+                .attr("flood-color", "rgba(0, 0, 0, 0.8)");
+            svg.selectAll("image[bubble-item]")
+                .attr("filter", "url(#image-shadow)");
 
             function onMouseEnter(event, d) {
                 const textElement = d3.select(event.target);
@@ -124,7 +239,7 @@ const D3BubbleChart = ({ data }) => {
                 .attr('cy', d => d.y);
         })
 
-    }, [nodes, links, ri, color]);
+    }, [nodes, links, color]);
 
     return (
         <div style={{ width: '100%', position: 'relative' }} id='bubble'>

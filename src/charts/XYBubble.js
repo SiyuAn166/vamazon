@@ -1,12 +1,83 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import drawLegend from './legend.js'
+
+function drawLegend(svg, color) {
+    const legend = svg
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', 'translate(20, 20)');
+
+    const legendColors = color.domain();
+    const legendRectSize = 18;
+    const legendSpacing = 4;
+    const legendItems = legend
+        .selectAll('.legend-item')
+        .data(legendColors)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-item')
+        .attr('cursor', 'pointer')
+        .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
+        .on('mouseenter', (e, d) => {
+            const nonHoveringImages = svg.selectAll("image")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            const nonHoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringImages
+                .transition()
+                .duration(100)
+                .attr('opacity', 0.02)
+            nonHoveringCircles
+                .transition()
+                .duration(300)
+                .attr('opacity', 0.02)
+        })
+        .on('mouseleave', (e, d) => {
+            const nonHoveringImages = svg.selectAll("image")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+
+            const nonHoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") !== d;
+                });
+            nonHoveringImages
+                .transition()
+                .duration(300)
+                .attr('opacity', 1)
+            nonHoveringCircles
+                .transition()
+                .duration(300)
+                .attr('opacity', 0.7)
+        })
+
+    legendItems
+        .append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .attr('color', d => color(d))
+        .style('fill', d => color(d))
+        .on('click', (d) => {
+
+        })
+
+    legendItems
+        .append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(d => d);
+
+}
+
 
 const XYBubble = ({ data }) => {
     const svgRef = useRef(null);
     const nodes = data.nodes;
-
-
 
     useEffect(() => {
         const width = 1000;
@@ -60,6 +131,7 @@ const XYBubble = ({ data }) => {
             .enter()
             .append('g');
         imageGroups.append('image')
+            .attr('grp', d => d.group)
             .attr('xlink:href', d => ri[d.rating - 1])
             .attr('x', d => xScale(d.rating) - radius)
             .attr('y', d => yScale(d.value) - radius)
@@ -67,11 +139,25 @@ const XYBubble = ({ data }) => {
             .attr('height', radius * 2)
             .attr('opacity', 1)
         imageGroups.append('circle')
+            .attr('grp', d => d.group)
             .attr('cx', d => xScale(d.rating))
             .attr('cy', d => yScale(d.value))
             .attr('r', radius)
             .attr('fill', d => color(d.group))
             .attr('opacity', 0.7)
+
+        svg.append("defs")
+            .append("filter")
+            .attr("id", "image-shadow")
+            .attr("width", "150%")
+            .attr("height", "150%")
+            .append("feDropShadow")
+            .attr("dx", 2)
+            .attr("dy", 2)
+            .attr("stdDeviation", 3)
+            .attr("flood-color", "rgba(0, 0, 0, 0.1)");
+        svg.selectAll("image")
+            .attr("filter", "url(#image-shadow)");
 
         drawLegend(svg, color);
 
