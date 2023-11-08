@@ -1,0 +1,26 @@
+.select-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.select-menu-label {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.select-menu-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.select-menu-option {
+    padding: 5px;
+    cursor: pointer;
+}

@@ -15,7 +15,6 @@ import tBubble from './data/BubbleText.json';
 import XYBubble from './charts/XYBubble';
 
 
-
 function App() {
 
   return (

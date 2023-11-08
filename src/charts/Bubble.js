@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import ColorSelector from './ColorSelector';
 
 
 const importAll = (requireContext) => requireContext.keys().map(requireContext);
@@ -129,6 +130,8 @@ const drawLegend = (svg, color) => {
 
 }
 
+
+
 const D3BubbleChart = ({ data }) => {
     const width = 1000;
     const height = 600;
@@ -136,25 +139,11 @@ const D3BubbleChart = ({ data }) => {
 
     const nodes = data.nodes;
     const links = data.links;
-    const [colorScheme, setColorScheme] = useState(d3.schemeCategory10);
-    const colorChange = (e) => {
-        const selectedValue = e.target.value;
-        const colorMappings = {
-            Category10: d3.schemeCategory10,
-            Accent: d3.schemeAccent,
-            Dark2: d3.schemeDark2,
-            Paired: d3.schemePaired,
-            Pastel1: d3.schemePastel1,
-            Pastel2: d3.schemePastel2,
-            Set1: d3.schemeSet1,
-            Set2: d3.schemeSet2,
-            Set3: d3.schemeSet3,
-            Tableau10: d3.schemeTableau10,
-        };
 
-        const selectedColor = colorMappings[selectedValue];
-        setColorScheme(selectedColor);
-    }
+    const [colorScheme, setColorScheme] = useState(d3.schemeCategory10);
+    const getColor = (colorSc) => {
+        setColorScheme(colorSc);
+    };
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
@@ -249,7 +238,6 @@ const D3BubbleChart = ({ data }) => {
                 d3.select('.hover-on').style('display', 'none').remove();
             }
 
-
             function onDragStart(event, d) {
                 simulation.alpha(1).restart();
                 d.fx = d.x;
@@ -287,19 +275,7 @@ const D3BubbleChart = ({ data }) => {
     return (
         <div style={{ width: '100%', position: 'relative' }} id='bubble'>
             <div>
-                <span>Color scale: </span>
-                <select onChange={colorChange}>
-                    <option value="Category10">Category10</option>
-                    <option value="Accent">Accent</option>
-                    <option value="Dark2">Dark2</option>
-                    <option value="Paired">Paired</option>
-                    <option value="Pastel1">Pastel1</option>
-                    <option value="Pastel2">Pastel2</option>
-                    <option value="Set1">Set1</option>
-                    <option value="Set2">Set2</option>
-                    <option value="Set3">Set3</option>
-                    <option value="Tableau10">Tableau10</option>
-                </select>
+                <ColorSelector onSelect={getColor} />
             </div>
             <svg ref={svgRef} width="100%" key={colorScheme.join('')}>
             </svg>
