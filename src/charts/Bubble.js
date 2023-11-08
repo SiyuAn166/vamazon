@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 
 const importAll = (requireContext) => requireContext.keys().map(requireContext);
 const ri = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
 
-function drawLegend(svg, color) {
+const drawLegend = (svg, color) => {
     const legend = svg
         .append('g')
         .attr('class', 'legend')
@@ -134,12 +134,31 @@ const D3BubbleChart = ({ data }) => {
     const height = 600;
     const svgRef = useRef(null);
 
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
     const nodes = data.nodes;
     const links = data.links;
+    const [colorScheme, setColorScheme] = useState(d3.schemeCategory10);
+    const colorChange = (e) => {
+        const selectedValue = e.target.value;
+        const colorMappings = {
+            Category10: d3.schemeCategory10,
+            Accent: d3.schemeAccent,
+            Dark2: d3.schemeDark2,
+            Paired: d3.schemePaired,
+            Pastel1: d3.schemePastel1,
+            Pastel2: d3.schemePastel2,
+            Set1: d3.schemeSet1,
+            Set2: d3.schemeSet2,
+            Set3: d3.schemeSet3,
+            Tableau10: d3.schemeTableau10,
+        };
+
+        const selectedColor = colorMappings[selectedValue];
+        setColorScheme(selectedColor);
+    }
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
+        const color = d3.scaleOrdinal(colorScheme);
         svg.attr('height', height)
         const centralForce = d3.forceCenter(width / 2, height / 2);
         const simulation = d3.forceSimulation(nodes)
@@ -263,11 +282,26 @@ const D3BubbleChart = ({ data }) => {
                 .attr('cy', d => d.y);
         })
 
-    }, [nodes, links, color]);
+    }, [nodes, links, colorScheme]);
 
     return (
         <div style={{ width: '100%', position: 'relative' }} id='bubble'>
-            <svg ref={svgRef} width="100%">
+            <div>
+                <span>Color scale: </span>
+                <select onChange={colorChange}>
+                    <option value="Category10">Category10</option>
+                    <option value="Accent">Accent</option>
+                    <option value="Dark2">Dark2</option>
+                    <option value="Paired">Paired</option>
+                    <option value="Pastel1">Pastel1</option>
+                    <option value="Pastel2">Pastel2</option>
+                    <option value="Set1">Set1</option>
+                    <option value="Set2">Set2</option>
+                    <option value="Set3">Set3</option>
+                    <option value="Tableau10">Tableau10</option>
+                </select>
+            </div>
+            <svg ref={svgRef} width="100%" key={colorScheme.join('')}>
             </svg>
         </div>
     );
