@@ -21,6 +21,7 @@ function drawLegend(svg, color) {
         .append('g')
         .attr('class', 'legend-item')
         .attr('cursor', 'pointer')
+        .attr('opacity', 1)
         .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
         .on('mouseenter', (e, d) => {
             const nonHoveringImages = svg.selectAll("image[bubble-item]")
@@ -59,7 +60,29 @@ function drawLegend(svg, color) {
                 .transition()
                 .duration(300)
                 .attr('opacity', 0.7)
-        });
+        })
+        .on('click', (e, d) => {
+            const hoveringImages = svg.selectAll("image[bubble-item]")
+                .filter(function () {
+                    return this.getAttribute("grp") === d;
+                });
+            const hoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") === d;
+                });
+
+            hoveringImages.style("display", function () {
+                return this.style.display === "none" ? "block" : "none";
+            });
+
+            hoveringCircles.style("display", function () {
+                return this.style.display === "none" ? "block" : "none";
+            });
+
+            const legIt = d3.select(e.currentTarget);
+            let op = legIt.attr('opacity');
+            legIt.attr('opacity', op === '1' ? '0.1' : '1');
+        })
 
     legendItems
         .append('rect')
@@ -67,7 +90,8 @@ function drawLegend(svg, color) {
         .attr('height', legendRectSize)
         .attr('color', d => color(d))
         .style('fill', d => color(d))
-        .on('click', (d) => {
+        .on('click', (e, d) => {
+            // console.log(e)
 
         });
 
@@ -96,12 +120,12 @@ function drawLegend(svg, color) {
         .attr('width', legendRectSize)
         .attr('height', legendRectSize)
         .attr('opacity', 1)
-    
-        emojiItems
+
+    emojiItems
         .append('text')
         .attr('x', legendRectSize + legendSpacing)
         .attr('y', legendRectSize - legendSpacing)
-        .text((d, i) => `Rating = ${i+1}`);
+        .text((d, i) => `Rating = ${i + 1}`);
 
 }
 

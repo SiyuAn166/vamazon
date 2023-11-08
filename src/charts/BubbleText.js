@@ -17,6 +17,7 @@ function drawLegend(svg, color) {
         .append('g')
         .attr('class', 'legend-item')
         .attr('cursor', 'pointer')
+        .attr('opacity', 1)
         .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
         .on('mouseenter', (e, d) => {
             const nonHoveringText = svg.selectAll(".bubble-text-item")
@@ -38,6 +39,19 @@ function drawLegend(svg, color) {
                 .duration(300)
                 .attr('opacity', 1)
         })
+        .on('click', (e, d) => {
+            const hoveringText = svg.selectAll(".bubble-text-item")
+                .filter(function () {
+                    return this.getAttribute("grp") === d;
+                });
+            hoveringText.style("display", function () {
+                let hidden = this.style.display === 'none';
+                return this.style.display = hidden ? 'block' : 'none';
+            });
+            const legIt = d3.select(e.currentTarget);
+            let op = legIt.attr('opacity');
+            legIt.attr('opacity', op === '1' ? '0.1' : '1');
+        })
 
     legendItems
         .append('rect')
@@ -57,6 +71,21 @@ function drawLegend(svg, color) {
 
 }
 
+function drawShadow(svg) {
+    svg
+        .append("defs")
+        .append("filter")
+        .attr("id", "text-shadow")
+        .attr("width", "150%")
+        .attr("height", "150%")
+        .append("feDropShadow")
+        .attr("dx", 2)
+        .attr("dy", 2)
+        .attr("stdDeviation", 3)
+        .attr("flood-color", "rgba(0, 0, 0, 0.6)");
+    svg.selectAll(".bubble-text-item")
+        .attr("filter", "url(#text-shadow)");
+}
 
 const BubbleText = ({ data }) => {
     const svgRef = useRef();
@@ -91,6 +120,7 @@ const BubbleText = ({ data }) => {
             .attr('text-anchor', 'middle')
             .attr('dy', '.35em')
             .attr('grp', d => d.group)
+            .attr('opacity', 1)
             .style('font-size', d => `${d.value * 1.5}px`)
             .style('fill', d => color(d.group))
             .style('cursor', 'pointer')
@@ -102,18 +132,7 @@ const BubbleText = ({ data }) => {
             .on('mouseenter', onMouseEnter)
             .on('mouseleave', onMouseLeave);
 
-        svg.append("defs")
-            .append("filter")
-            .attr("id", "text-shadow")
-            .attr("width", "150%")
-            .attr("height", "150%")
-            .append("feDropShadow")
-            .attr("dx", 2)
-            .attr("dy", 2)
-            .attr("stdDeviation", 3)
-            .attr("flood-color", "rgba(0, 0, 0, 0.6)");
-        svg.selectAll(".bubble-text-item")
-            .attr("filter", "url(#text-shadow)");
+        drawShadow(svg);
 
         drawLegend(svg, color);
 
@@ -178,7 +197,9 @@ const BubbleText = ({ data }) => {
                 .attr('x', d => d.x)
                 .attr('y', d => d.y);
 
+
         })
+
     }, [data, color]);
 
 

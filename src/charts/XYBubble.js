@@ -17,6 +17,7 @@ function drawLegend(svg, color) {
         .append('g')
         .attr('class', 'legend-item')
         .attr('cursor', 'pointer')
+        .attr('opacity', 1)
         .attr('transform', (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`)
         .on('mouseenter', (e, d) => {
             const nonHoveringImages = svg.selectAll("image")
@@ -54,6 +55,27 @@ function drawLegend(svg, color) {
                 .transition()
                 .duration(300)
                 .attr('opacity', 0.7)
+        })
+        .on('click', (e, d) => {
+            const hoveringImages = svg.selectAll("image")
+                .filter(function () {
+                    return this.getAttribute("grp") === d;
+                });
+            const hoveringCircles = svg.selectAll("circle")
+                .filter(function () {
+                    return this.getAttribute("grp") === d;
+                });
+
+            hoveringImages.style("display", function () {
+                return this.style.display === "none" ? "block" : "none";
+            });
+
+            hoveringCircles.style("display", function () {
+                return this.style.display === "none" ? "block" : "none";
+            });
+            const legIt = d3.select(e.currentTarget);
+            let op = legIt.attr('opacity');
+            legIt.attr('opacity', op === '1' ? '0.1' : '1');
         })
 
     legendItems
