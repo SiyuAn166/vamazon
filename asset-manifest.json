@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/vamazon/static/css/main.09e39ac1.css",
-    "main.js": "/vamazon/static/js/main.36490d5a.js",
+    "main.js": "/vamazon/static/js/main.3c41c198.js",
     "static/js/787.e89ab24c.chunk.js": "/vamazon/static/js/787.e89ab24c.chunk.js",
-    "static/media/1.png": "/vamazon/static/media/1.deb4c0eecb5610ac0547.png",
-    "static/media/5.png": "/vamazon/static/media/5.1a5532d3d25b2b5d9677.png",
-    "static/media/4.png": "/vamazon/static/media/4.cf6df51cdf8860bf428c.png",
-    "static/media/2.png": "/vamazon/static/media/2.d6c8ccb91d366727a04b.png",
+    "static/media/2.png": "/vamazon/static/media/2.a80ef50ec843f378a714.png",
+    "static/media/5.png": "/vamazon/static/media/5.dd7494021f33dfb9e59f.png",
+    "static/media/4.png": "/vamazon/static/media/4.9851e81a6a9a04f79749.png",
+    "static/media/1.png": "/vamazon/static/media/1.678b67563b91f9621d84.png",
     "static/media/3.png": "/vamazon/static/media/3.a2aede9f4cc2e0090b7a.png",
     "index.html": "/vamazon/index.html",
     "main.09e39ac1.css.map": "/vamazon/static/css/main.09e39ac1.css.map",
-    "main.36490d5a.js.map": "/vamazon/static/js/main.36490d5a.js.map",
+    "main.3c41c198.js.map": "/vamazon/static/js/main.3c41c198.js.map",
     "787.e89ab24c.chunk.js.map": "/vamazon/static/js/787.e89ab24c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.09e39ac1.css",
-    "static/js/main.36490d5a.js"
+    "static/js/main.3c41c198.js"
   ]
 }
