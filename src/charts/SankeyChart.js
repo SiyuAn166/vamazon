@@ -40,6 +40,8 @@ const Sankey = ({ data }) => {
           label: {
             fontSize: 15,
             position: "top",
+            offset: [0, -30],
+            rotate: 180
           },
           ...chartOptions,
         },

@@ -29,32 +29,32 @@
         {
             "source": "Amazon Products",
             "target": "Lifestyle Products",
-            "value": 5
+            "value": 10
         },
         {
             "source": "Lifestyle Products",
             "target": "All Beauty",
-            "value": 2
+            "value": 5
         },
         {
             "source": "Lifestyle Products",
             "target": "Fashion",
-            "value": 2
+            "value": 3
         },
         {
             "source": "Lifestyle Products",
             "target": "Luxury Beauty",
-            "value": 1
+            "value": 2
         },
         {
             "source": "Amazon Products",
             "target": "Technical Products",
-            "value": 3
+            "value": 4
         },
         {
             "source": "Technical Products",
             "target": "Industrial and Scientific",
-            "value": 1
+            "value": 2
         },
         {
             "source": "Technical Products",

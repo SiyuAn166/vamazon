@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Sankey from "../SankeyChart";
 import LineeChart from "../LineeChart";
 
