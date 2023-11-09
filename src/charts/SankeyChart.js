@@ -52,7 +52,7 @@ const Sankey = ({ data }) => {
   return (
     <div
       ref={chartRef}
-      style={{ width: "100%", height: "1000px", rotate: "180deg" }}
+      style={{ width: "100%", height: "1000px", transform: 'rotate(180deg)' }}
     />
   );
 };
