@@ -221,7 +221,7 @@ const ScrollableBubbleChart = ({ data }) => {
       const radius = 35;
 
 
-      svg.selectAll('image[bubble-item=true]').transition().duration(1500)
+      svg.selectAll('image[bubble-item=true]').transition().duration(1500).ease(d3.easeQuadOut)
         .attr('grp', d => d.group)
         .attr('xlink:href', d => ri[d.rating - 1])
         .attr('x', d => xScale(d.rating) - radius)
@@ -229,7 +229,7 @@ const ScrollableBubbleChart = ({ data }) => {
         .attr('width', radius * 2)
         .attr('height', radius * 2)
         .attr('opacity', 1)
-      svg.selectAll('circle[bubble-circle=true]').transition().duration(1500)
+      svg.selectAll('circle[bubble-circle=true]').transition().duration(1500).ease(d3.easeQuadOut)
         .attr('grp', d => d.group)
         .attr('cx', d => xScale(d.rating))
         .attr('cy', d => yScale(d.value))
