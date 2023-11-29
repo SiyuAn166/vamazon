@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
+
 function drawLegend(svg, color) {
     const legend = svg
         .append('g')
@@ -201,7 +202,6 @@ const BubbleText = ({ data }) => {
         })
 
     }, [data, color]);
-
 
 
 

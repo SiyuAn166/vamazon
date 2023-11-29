@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div>
-        <ScrollableBubbleChart data={bubbleData} />
-        <BubbleText data={wordcloudData} />
+      <ScrollableBubbleChart data={bubbleData} />
+      <BubbleText data={wordcloudData} />
     </div>
   );
 }

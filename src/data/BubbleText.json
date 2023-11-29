@@ -1,177 +1,177 @@
 [
-    {
-      "group": "appliances",
-      "rating": 1,
-      "count": 9,
-      "text": "NewAir will not stand behind their products - company emails included",
-      "value": 16.0
-    },
-    {
-      "group": "appliances",
-      "rating": 2,
-      "count": 13,
-      "text": "the five star posts are from new owners, the rest from disgruntle owners 6 months in with broken icemaker!",
-      "value": 16.00810263335584
-    },
-    {
-      "group": "appliances",
-      "rating": 3,
-      "count": 421,
-      "text": "Good delivery for the price.",
-      "value": 16.834571235651588
-    },
-    {
-      "group": "appliances",
-      "rating": 4,
-      "count": 222,
-      "text": "Good value for the price.",
-      "value": 16.431465226198515
-    },
-    {
-      "group": "appliances",
-      "rating": 5,
-      "count": 1612,
-      "text": "Great product",
-      "value": 19.24713031735314
-    },
-    {
-      "group": "beauty",
-      "rating": 1,
-      "count": 115,
-      "text": "Smells awful",
-      "value": 16.214719783929777
-    },
-    {
-      "group": "beauty",
-      "rating": 2,
-      "count": 64,
-      "text": "No change my scalp still itches like crazy. It doesnt lather at all so its ...",
-      "value": 16.11141120864281
-    },
-    {
-      "group": "beauty",
-      "rating": 3,
-      "count": 109,
-      "text": "Three Stars",
-      "value": 16.202565833896017
-    },
-    {
-      "group": "beauty",
-      "rating": 4,
-      "count": 332,
-      "text": "Four Stars",
-      "value": 16.654287643484132
-    },
-    {
-      "group": "beauty",
-      "rating": 5,
-      "count": 4649,
-      "text": "Five Stars",
-      "value": 25.399054692775152
-    },
-    {
-      "group": "fashion",
-      "rating": 1,
-      "count": 117,
-      "text": "One Star",
-      "value": 16.218771100607697
-    },
-    {
-      "group": "fashion",
-      "rating": 2,
-      "count": 93,
-      "text": "These were recommended by my Podiatrist",
-      "value": 16.170155300472654
-    },
-    {
-      "group": "fashion",
-      "rating": 3,
-      "count": 337,
-      "text": "Oops!",
-      "value": 16.664415935178933
-    },
-    {
-      "group": "fashion",
-      "rating": 4,
-      "count": 471,
-      "text": "size runs big",
-      "value": 16.935854152599596
-    },
-    {
-      "group": "fashion",
-      "rating": 5,
-      "count": 2158,
-      "text": "Five Stars",
-      "value": 20.353139770425386
-    },
-    {
-      "group": "industrial",
-      "rating": 1,
-      "count": 560,
-      "text": "Strong but very difficult to work with.",
-      "value": 17.116137744767048
-    },
-    {
-      "group": "industrial",
-      "rating": 2,
-      "count": 484,
-      "text": "Two Stars",
-      "value": 16.962187711006077
-    },
-    {
-      "group": "industrial",
-      "rating": 3,
-      "count": 1189,
-      "text": "It sticks VERY well.",
-      "value": 18.39027683997299
-    },
-    {
-      "group": "industrial",
-      "rating": 4,
-      "count": 2947,
-      "text": "As advertised",
-      "value": 21.951384199864957
-    },
-    {
-      "group": "industrial",
-      "rating": 5,
-      "count": 14819,
-      "text": "Couldn't have been happier with it's performance",
-      "value": 46.0
-    },
-    {
-      "group": "luxbeauty",
-      "rating": 1,
-      "count": 726,
-      "text": "That burning sensation...",
-      "value": 17.452397029034437
-    },
-    {
-      "group": "luxbeauty",
-      "rating": 2,
-      "count": 816,
-      "text": "Great service but Ugly color",
-      "value": 17.63470627954085
-    },
-    {
-      "group": "luxbeauty",
-      "rating": 3,
-      "count": 1883,
-      "text": "Paying for the name",
-      "value": 19.796083727211343
-    },
-    {
-      "group": "luxbeauty",
-      "rating": 4,
-      "count": 3550,
-      "text": "Smells good, absorbs quickly",
-      "value": 23.172856178257934
-    },
-    {
-      "group": "luxbeauty",
-      "rating": 5,
-      "count": 13024,
-      "text": "Beautiful Fragrance",
-      "value": 42.363943281566506
-    }
-  ]
+  {
+    "group": "appliances",
+    "rating": 1,
+    "count": 9,
+    "text": "warranty, refurbished, newair, manufacturer, icemaker",
+    "value": 16.0
+  },
+  {
+    "group": "appliances",
+    "rating": 2,
+    "count": 13,
+    "text": "star, posts, warranty, new, icemaker",
+    "value": 16.00810263335584
+  },
+  {
+    "group": "appliances",
+    "rating": 3,
+    "count": 421,
+    "text": "connect, delivery, price, modidify, good",
+    "value": 16.834571235651588
+  },
+  {
+    "group": "appliances",
+    "rating": 4,
+    "count": 222,
+    "text": "value, price, good",
+    "value": 16.431465226198515
+  },
+  {
+    "group": "appliances",
+    "rating": 5,
+    "count": 1612,
+    "text": "vent, painted, warmer, house, winter",
+    "value": 19.24713031735314
+  },
+  {
+    "group": "beauty",
+    "rating": 1,
+    "count": 115,
+    "text": "shave, smelled, smell, smells, perfume",
+    "value": 16.214719783929777
+  },
+  {
+    "group": "beauty",
+    "rating": 2,
+    "count": 64,
+    "text": "scalp, lather, itches, hair, change",
+    "value": 16.11141120864281
+  },
+  {
+    "group": "beauty",
+    "rating": 3,
+    "count": 109,
+    "text": "lather, stars, hair, noticed, difference",
+    "value": 16.202565833896017
+  },
+  {
+    "group": "beauty",
+    "rating": 4,
+    "count": 332,
+    "text": "drying, stars, kind, good",
+    "value": 16.654287643484132
+  },
+  {
+    "group": "beauty",
+    "rating": 5,
+    "count": 4649,
+    "text": "stars, priced, advertised, reasonably",
+    "value": 25.399054692775152
+  },
+  {
+    "group": "fashion",
+    "rating": 1,
+    "count": 117,
+    "text": "star, big, waaaay",
+    "value": 16.218771100607697
+  },
+  {
+    "group": "fashion",
+    "rating": 2,
+    "count": 93,
+    "text": "podiatrist, fascitis, plantar, pain, recommended",
+    "value": 16.170155300472654
+  },
+  {
+    "group": "fashion",
+    "rating": 3,
+    "count": 337,
+    "text": "small, futur, children, oops, waaay",
+    "value": 16.664415935178933
+  },
+  {
+    "group": "fashion",
+    "rating": 4,
+    "count": 471,
+    "text": "sizes, size, chart, runs, bigger",
+    "value": 16.935854152599596
+  },
+  {
+    "group": "fashion",
+    "rating": 5,
+    "count": 2158,
+    "text": "stars, product, price, great",
+    "value": 20.353139770425386
+  },
+  {
+    "group": "industrial",
+    "rating": 1,
+    "count": 560,
+    "text": "glue, glues, glued, strong, nozzle",
+    "value": 17.116137744767048
+  },
+  {
+    "group": "industrial",
+    "rating": 2,
+    "count": 484,
+    "text": "fit, stars, returned, didn",
+    "value": 16.962187711006077
+  },
+  {
+    "group": "industrial",
+    "rating": 3,
+    "count": 1189,
+    "text": "sticking, adhesive, sticky, glue, sticks",
+    "value": 18.39027683997299
+  },
+  {
+    "group": "industrial",
+    "rating": 4,
+    "count": 2947,
+    "text": "advertised",
+    "value": 21.951384199864957
+  },
+  {
+    "group": "industrial",
+    "rating": 5,
+    "count": 14819,
+    "text": "sandpaper, adhesive, scratches, marks, grit",
+    "value": 46.0
+  },
+  {
+    "group": "luxbeauty",
+    "rating": 1,
+    "count": 726,
+    "text": "deodorant, deodorants, scent, burning, sensation",
+    "value": 17.452397029034437
+  },
+  {
+    "group": "luxbeauty",
+    "rating": 2,
+    "count": 816,
+    "text": "yellow, polish, color, service, chick",
+    "value": 17.63470627954085
+  },
+  {
+    "group": "luxbeauty",
+    "rating": 3,
+    "count": 1883,
+    "text": "improvement, product, priced, paying, similarly",
+    "value": 19.796083727211343
+  },
+  {
+    "group": "luxbeauty",
+    "rating": 4,
+    "count": 3550,
+    "text": "cream, smells, summer, absorbs, hand",
+    "value": 23.172856178257934
+  },
+  {
+    "group": "luxbeauty",
+    "rating": 5,
+    "count": 13024,
+    "text": "fragrance, handcream, hands, washing, small",
+    "value": 42.363943281566506
+  }
+]
