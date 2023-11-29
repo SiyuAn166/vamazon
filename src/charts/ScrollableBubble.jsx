@@ -150,7 +150,7 @@ const ScrollableBubbleChart = ({ data }) => {
   const handleScroll = (event) => {
     const deltaY = event.deltaY;
 
-    if (Math.abs(deltaY) > 1) {
+    if (Math.abs(deltaY) > 20) {
       setXYBubble(true);
     }
   }
