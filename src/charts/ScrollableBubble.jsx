@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import ColorSelector from './ColorSelector';
+// import ColorSelector from './ColorSelector';
 
 
 const importAll = (requireContext) => requireContext.keys().map(requireContext);
@@ -130,9 +130,7 @@ const drawLegend = (svg, color) => {
 
 }
 
-const ToggleButton = ({ onClick, label }) => (
-  <button onClick={onClick}>{label}</button>
-);
+
 const ScrollableBubbleChart = ({ data }) => {
   const width = 1000;
   const height = 600;
@@ -143,14 +141,14 @@ const ScrollableBubbleChart = ({ data }) => {
   const links = data.links;
 
   const [colorScheme, setColorScheme] = useState(d3.schemeCategory10);
-  const getColor = (colorSc) => {
-    setColorScheme(colorSc);
-  };
+  // const getColor = (colorSc) => {
+  //   setColorScheme(colorSc);
+  // };
 
   const handleScroll = (event) => {
     const deltaY = event.deltaY;
 
-    if (Math.abs(deltaY) > 20) {
+    if (Math.abs(deltaY) > 50) {
       setXYBubble(true);
     }
   }
@@ -184,35 +182,46 @@ const ScrollableBubbleChart = ({ data }) => {
         .domain([0, d3.max(nodes, d => d.value) + 5])
         .range([height - 50, 0]);
 
-      svg.append('g')
+      // x axis
+      const xAxisGroup = svg.append('g')
         .attr('transform', `translate(0, ${height - 50})`)
-        .call(d3.axisBottom(xScale))
-        .call(g => g.append("text")
-          .attr("x", offset + width / 2)
-          .attr("y", 40)
-          .attr("font-weight", "bold")
-          .attr("text-anchor", "end")
-          .attr('font-size', 16)
-          .attr("fill", "currentColor")
-          .text("Rating"));
+        .attr('opacity', 0);
+      xAxisGroup.call(d3.axisBottom(xScale));
+      xAxisGroup.append("text")
+        .attr("x", offset + width / 2)
+        .attr("y", 40)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "end")
+        .attr('font-size', 16)
+        .attr("fill", "currentColor")
+        .text("Rating");
+      xAxisGroup.transition()
+        .duration(1500)
+        .attr('opacity', 1);
 
-      svg.append('g')
+      // y axis
+      const yAxisGroup = svg.append('g')
         .attr('transform', `translate(${offset}, 0)`)
-        .call(d3.axisLeft(yScale))
-        .call(g => g.append("text")
-          .attr("x", -40)
-          .attr("y", height / 2)
-          .attr("font-weight", "bold")
-          .attr("text-anchor", "middle")
-          .attr('font-size', 16)
-          .attr("fill", "currentColor")
-          .attr("writing-mode", "vertical-lr")
-          .text("Number of reviews"));
+        .attr('opacity', 0);
+      yAxisGroup.call(d3.axisLeft(yScale));
+      yAxisGroup.append("text")
+        .attr("x", -40)
+        .attr("y", height / 2)
+        .attr("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .attr('font-size', 16)
+        .attr("fill", "currentColor")
+        .attr("writing-mode", "vertical-lr")
+        .text("Number of reviews");
+      yAxisGroup.transition()
+        .duration(1500)
+        .attr('opacity', 1);
+
 
       const radius = 35;
 
 
-      svg.selectAll('image[bubble-item=true]').transition().duration(1000)
+      svg.selectAll('image[bubble-item=true]').transition().duration(1500)
         .attr('grp', d => d.group)
         .attr('xlink:href', d => ri[d.rating - 1])
         .attr('x', d => xScale(d.rating) - radius)
@@ -220,7 +229,7 @@ const ScrollableBubbleChart = ({ data }) => {
         .attr('width', radius * 2)
         .attr('height', radius * 2)
         .attr('opacity', 1)
-      svg.selectAll('circle[bubble-circle=true]').transition().duration(1000)
+      svg.selectAll('circle[bubble-circle=true]').transition().duration(1500)
         .attr('grp', d => d.group)
         .attr('cx', d => xScale(d.rating))
         .attr('cy', d => yScale(d.value))

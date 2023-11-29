@@ -1,4 +1,7 @@
 import "./App.css";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { useState } from "react";
+import "react-tabs/style/react-tabs.css";
 
 import sankeyData from "./data/SankeyChart.json";
 import lineData from "./data/LineChart.json";
@@ -11,12 +14,33 @@ import ScrollableBubbleChart from "./charts/ScrollableBubble";
 import BubbleText from "./charts/BubbleText";
 
 function App() {
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const handleTabSelect = (index) => {
+    setTabIndex(index);
+  };
+
   return (
     <div>
-      <SankeyLine data={{ sankeyData: sankeyData, lineData: lineData }} />
-      {/* <EmojiBubble data={{ emojiBubbleData: bubbleData }} /> */}
-      <ScrollableBubbleChart data={bubbleData} />
-      <BubbleText data={wordcloudData} />
+      <Tabs selectedIndex={tabIndex} onSelect={handleTabSelect}>
+        <TabList>
+          <Tab>Seasonal Analysis</Tab>
+          <Tab>Sentiment Analysis</Tab>
+          <Tab>Keywords Analysis</Tab>
+        </TabList>
+
+        <TabPanel>
+          <SankeyLine data={{ sankeyData, lineData }} />
+        </TabPanel>
+
+        <TabPanel>
+          <ScrollableBubbleChart data={bubbleData} />
+        </TabPanel>
+
+        <TabPanel>
+          <BubbleText data={wordcloudData} />
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }
