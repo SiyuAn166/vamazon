@@ -104,7 +104,7 @@ const BubbleText = ({ data }) => {
             .force("x", d3.forceX().strength(0.01))
             .force("y", d3.forceY().strength(0.01))
             .force('center', centralForce)
-            .force('collide', d3.forceCollide().radius(d => d.value * 3.6).iterations(5))
+            .force('collide', d3.forceCollide().radius(d => d.value * 2).iterations(5))
             .force("charge", d3.forceManyBody().strength((d, i) => i ? 0 : 3))
             .alpha(1)
             .alphaTarget(0.3)
@@ -121,7 +121,7 @@ const BubbleText = ({ data }) => {
             .attr('dy', '.35em')
             .attr('grp', d => d.group)
             .attr('opacity', 1)
-            .style('font-size', d => `${d.value * 1.5}px`)
+            .style('font-size', d => `${d.value}px`)
             .style('fill', d => color(d.group))
             .style('cursor', 'pointer')
             .text(d => d.text)
@@ -156,7 +156,7 @@ const BubbleText = ({ data }) => {
                 .style('padding', '10px')
                 .style('color', 'white')
                 .html(`
-                    <p>Name: ${d.name}</p>
+                    <p>Count: ${d.count}</p>
                     <p>Review: ${d.text}</p>
                     <p>Rating: ${d.rating}</p>
                     <p>Category: ${d.group}</p>

@@ -138,9 +138,8 @@ const ScrollableBubbleChart = ({ data }) => {
   const [xyBubble, setXYBubble] = useState(false);
 
   const nodes = data.nodes;
-  const links = data.links;
 
-  const [colorScheme, setColorScheme] = useState(d3.schemeCategory10);
+  const [colorScheme] = useState(d3.schemeCategory10);
   // const getColor = (colorSc) => {
   //   setColorScheme(colorSc);
   // };
@@ -166,7 +165,7 @@ const ScrollableBubbleChart = ({ data }) => {
       // .force("link", d3.forceLink(links).id(d => d.name))
       .force('collide', d3.forceCollide().radius(d => d.value * 2.5).iterations(5))
       .force("charge", d3.forceManyBody().strength((d, i) => i ? 0 : 3))
-      .alpha(0.6)
+      .alpha(0.9)
       .alphaTarget(0.3)
       .velocityDecay(0.1)
 
@@ -179,7 +178,7 @@ const ScrollableBubbleChart = ({ data }) => {
         .range([offset, offset + width]);
 
       var yScale = d3.scaleLinear()
-        .domain([0, d3.max(nodes, d => d.value) + 5])
+        .domain([-2000, d3.max(nodes, d => d.count) + 5000])
         .range([height - 50, 0]);
 
       // x axis
@@ -205,13 +204,13 @@ const ScrollableBubbleChart = ({ data }) => {
         .attr('opacity', 0);
       yAxisGroup.call(d3.axisLeft(yScale));
       yAxisGroup.append("text")
-        .attr("x", -40)
-        .attr("y", height / 2)
+        .attr("x", 90)
+        .attr("y", 20)
         .attr("font-weight", "bold")
         .attr("text-anchor", "middle")
         .attr('font-size', 16)
         .attr("fill", "currentColor")
-        .attr("writing-mode", "vertical-lr")
+        .attr("writing-mode", "horizontal-lr")
         .text("Number of reviews");
       yAxisGroup.transition()
         .duration(1500)
@@ -225,14 +224,14 @@ const ScrollableBubbleChart = ({ data }) => {
         .attr('grp', d => d.group)
         .attr('xlink:href', d => ri[d.rating - 1])
         .attr('x', d => xScale(d.rating) - radius)
-        .attr('y', d => yScale(d.value) - radius)
+        .attr('y', d => yScale(d.count) - radius)
         .attr('width', radius * 2)
         .attr('height', radius * 2)
         .attr('opacity', 1)
       svg.selectAll('circle[bubble-circle=true]').transition().duration(1500).ease(d3.easeQuadOut)
         .attr('grp', d => d.group)
         .attr('cx', d => xScale(d.rating))
-        .attr('cy', d => yScale(d.value))
+        .attr('cy', d => yScale(d.count))
         .attr('r', radius)
         .attr('fill', d => color(d.group))
         .attr('opacity', 0.7)
@@ -315,9 +314,9 @@ const ScrollableBubbleChart = ({ data }) => {
           .style('border-radius', '15px')
           .style('padding', '10px')
           .style('color', 'white')
+          // <p>Name: ${d.name}</p>
           .html(`
-                        <p>Name: ${d.name}</p>
-                        <p>Value: ${d.value}</p>
+                        <p>Count: ${d.count}</p>
                         <p>Rating: ${d.rating}</p>
                         <p>Category: ${d.group}</p>
                         `);
@@ -379,7 +378,7 @@ const ScrollableBubbleChart = ({ data }) => {
     }
 
 
-  }, [nodes, links, colorScheme, xyBubble]);
+  }, [nodes, colorScheme, xyBubble]);
 
 
   return (
