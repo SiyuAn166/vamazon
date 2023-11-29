@@ -24,11 +24,20 @@ const Sankey = ({ data }) => {
         emphasis: {
           focus: "adjacency",
         },
+        
       };
 
       const myChart = echarts.init(chartRef.current);
 
       myChart.setOption({
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
+          formatter: function(params) {
+            return '<div style="transform: rotate(180deg);">' + params.name + 
+            '<br> Value: ' + params.value + '</div>';
+          }
+        },
         series: {
           type: "sankey",
           layout: "none",
