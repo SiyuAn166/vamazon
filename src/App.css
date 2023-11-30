@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-#root {
-  padding-top: 30px;
-  padding-bottom: 100px;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -108,8 +103,6 @@
 .wrapper {
   position: relative;
 }
-
-
 
 /* Dialog Wrapper */
 .dialog-wrap {

@@ -132,8 +132,8 @@ const drawLegend = (svg, color) => {
 
 
 const ScrollableBubbleChart = ({ data }) => {
-  const width = 1000;
-  const height = 600;
+  const width = 500;
+  const height = 400;
   const svgRef = useRef(null);
   const [xyBubble, setXYBubble] = useState(false);
 
